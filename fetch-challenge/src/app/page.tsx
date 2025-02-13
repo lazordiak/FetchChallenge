@@ -23,24 +23,25 @@ export default function Home() {
   };
 
   const handleLogin = async () => {
-    /*const reqConfig = {
+    const reqConfig = {
       url: `${BASE_URL}/auth/login`,
       data: {
         name,
         email,
+        withCredentials: true,
       },
-    };*/
+    };
     try {
-      //await axios.post(reqConfig.url, reqConfig.data);
-      await fetch(`${BASE_URL}/auth/login`, {
+      await axios.post(reqConfig.url, reqConfig.data);
+      /*await fetch(`${BASE_URL}/auth/login`, {
         method: "POST",
+        credentials: "include",
         body: JSON.stringify({ name, email }),
         headers: { "Content-Type": "application/json" },
-      });
+      });*/
       setIsLoggedIn(true);
-      //await fetchBreeds();
-    } catch (error) {
       await fetchBreeds();
+    } catch (error) {
       console.error(error);
     }
   };
