@@ -35,7 +35,7 @@ export default function Home() {
       await fetch(`${BASE_URL}/auth/login`, {
         method: "POST",
         body: JSON.stringify({ name, email }),
-        //headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json" },
       });
       setIsLoggedIn(true);
       //await fetchBreeds();
