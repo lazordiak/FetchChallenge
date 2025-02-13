@@ -1,22 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { LoginModal } from "./components/modals/LoginModal";
 import axios from "axios";
 import { BASE_URL } from "./utils/fonts";
 import { Header } from "./components/Header";
+import { BreedButton } from "./components/buttons/BreedButton";
 
 export default function Home() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [dogs, setDogs] = useState([]);
+  //const [dogs, setDogs] = useState([]);
+  const [breeds, setBreeds] = useState<string[]>([]);
 
-  const fetchAllDogs = async () => {
-    const response = await axios.get(`${BASE_URL}/dogs/search`, {
+  const fetchBreeds = async () => {
+    const response = await axios.get(`${BASE_URL}/dogs/breeds`, {
       withCredentials: true,
     });
-    console.log(response);
+    console.log("response to breeds fetch", response);
+    setBreeds(response.data);
   };
 
   const handleLogin = async () => {
@@ -30,7 +33,7 @@ export default function Home() {
     try {
       await axios.post(reqConfig.url, reqConfig.data);
       setIsLoggedIn(true);
-      await fetchAllDogs();
+      await fetchBreeds();
     } catch (error) {
       console.error(error);
     }
@@ -61,7 +64,12 @@ export default function Home() {
       <h1 className="text-center text-2xl font-bold">
         Welcome to Doggo&apos;s Delight
       </h1>
-      <div className="flex justify-center"></div>
+      <div className="flex justify-center">
+        {breeds &&
+          breeds.map((breed) => {
+            return <BreedButton key={breed} breed={breed} />;
+          })}
+      </div>
     </div>
   );
 }
