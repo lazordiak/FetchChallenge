@@ -2,6 +2,7 @@ import { Dog } from "@/app/page";
 import { FC } from "react";
 import { DogCard } from "../cards/DogCard";
 import { quicksand } from "@/app/utils/fonts";
+import { motion } from "motion/react";
 
 interface DogGridProps {
   dogs: Dog[];
@@ -38,22 +39,24 @@ export const DogGrid: FC<DogGridProps> = ({
       <div
         className={`${quicksand.className} w-full flex-row gap-8 flex justify-center`}
       >
-        <button
+        <motion.button
+          whileHover={{ color: "#BC6C25" }}
           onClick={() => setAllOrFavs("all")}
           className={`${
             allOrFavs === "all" ? "underline" : ""
           } font-semibold text-3xl`}
         >
           Show All Dogs
-        </button>
-        <button
+        </motion.button>
+        <motion.button
+          whileHover={{ color: "#BC6C25" }}
           onClick={() => setAllOrFavs("favs")}
           className={`${
             allOrFavs === "favs" ? "underline" : ""
           } font-semibold text-3xl`}
         >
           Show Only Favorites
-        </button>
+        </motion.button>
       </div>
       <div className="grid grid-cols-1 w-full md:grid-cols-3 lg:grid-cols-4 gap-4">
         {dogs.map((dog, index) => {
