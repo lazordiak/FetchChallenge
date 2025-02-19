@@ -1,5 +1,6 @@
 import { FC } from "react";
 import SimpleModal from "./SimpleModal";
+import { poppins, quicksand } from "@/app/utils/fonts";
 
 interface LoginModalProps {
   email: string;
@@ -20,8 +21,10 @@ export const LoginModal: FC<LoginModalProps> = ({
 }) => {
   return (
     <SimpleModal isOpen={true}>
-      <div className="flex flex-col gap-4">
-        <h1 className="w-full text-center text-2xl font-bold">
+      <div className={`${poppins.className} flex flex-col gap-4`}>
+        <h1
+          className={`${quicksand.className} text-deepForest w-full text-center text-2xl font-bold`}
+        >
           Login To Doggo&apos;s Delight
         </h1>
         <div>
@@ -31,7 +34,7 @@ export const LoginModal: FC<LoginModalProps> = ({
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="p-2 w-full text-nightBlack"
+            className="p-2 border-2 border-nightBlack rounded-lg w-full text-nightBlack"
           ></input>
         </div>
         <div>
@@ -41,7 +44,7 @@ export const LoginModal: FC<LoginModalProps> = ({
             placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="p-2 w-full text-black"
+            className="p-2 border-2 border-nightBlack rounded-lg w-full text-nightBlack"
           ></input>
         </div>
         {modalError && (
@@ -50,7 +53,7 @@ export const LoginModal: FC<LoginModalProps> = ({
         <div className="flex w-full justify-center">
           <button
             onClick={handleLogin}
-            className="w-1/2 bg-nightBlack text-whiteSmoke p-2 rounded-md"
+            className="w-1/2 bg-tigersEye text-whiteSmoke p-2 rounded-md"
           >
             Login
           </button>

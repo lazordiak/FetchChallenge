@@ -33,14 +33,8 @@ const SimpleModal: React.FC<ModalProps> = ({
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.9, opacity: 0 }}
           >
-            <div className="bg-whiteSmoke relative text-nightBlack p-4 rounded-lg shadow-lg max-w-sm w-full">
-              {/*<button
-                className="absolute top-2 right-2 text-gray-600 hover:text-gray-900"
-                onClick={onClose}
-              >
-                <X />
-              </button>*/}
-              <div key={"FakeKey"}>{children}</div>
+            <div className="bg-cornsilk relative text-nightBlack p-4 rounded-lg shadow-lg max-w-sm w-full">
+              <div>{children}</div>
             </div>
           </motion.div>
         </>
